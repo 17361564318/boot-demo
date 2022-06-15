@@ -1,0 +1,33 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /boot
+  tomcat:
+    uri-encoding: UTF-8
+async:
+  executor:
+    thread:
+      core_pool_size: 5
+      max_pool_size: 5
+      queue_capacity: 5
+      name:
+        prefix: myThread-service-
+spring:
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/boot-demo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+mybatis:
+  type-aliases-package: com.feng.entity
+  mapper-locations: mapper/*Mapper.xml
+logging:
+  level:
+    com.feng: info
+    com.feng.dao: debug
