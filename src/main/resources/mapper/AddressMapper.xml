@@ -6,4 +6,12 @@
         values(#{province}, #{city}, #{street}, #{userId})
     </insert>
 
+    <select id="findAddressByCity" resultType="address">
+        select * from address
+        <where>
+            <if test="city != null and city != ''">
+                and city = #{city}
+            </if>
+        </where>
+    </select>
 </mapper>

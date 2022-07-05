@@ -1,7 +1,9 @@
 package com.feng;
 
 import com.alibaba.fastjson.JSONObject;
+import com.feng.dao.AddressDao;
 import com.feng.dao.UserDao;
+import com.feng.entity.Address;
 import com.feng.entity.User;
 import com.feng.service.UserService;
 import com.feng.test1.ConfigurationClass;
@@ -35,11 +37,13 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-//@SpringBootTest
+@SpringBootTest
 class BootDemoApplicationTests {
     private static final Logger logger = LoggerFactory.getLogger(BootDemoApplicationTests.class);
     @Autowired
     private UserService userService;
+    @Autowired
+    private AddressDao addressDao;
 
     private RestTemplate restTemplate;
     private HttpHeaders headers;
@@ -57,6 +61,7 @@ class BootDemoApplicationTests {
     void dateTest() throws Exception {
         try {
             test6();
+            int a = 10 / 0;
             System.out.println("你好");
         } catch (Exception e) {
             logger.error("code have error ,but don't worry");
@@ -215,4 +220,47 @@ class BootDemoApplicationTests {
         list.forEach(System.out::println);
     }
 
+    @Test
+    public void test9() {
+        int i = 1;
+        boolean flag;
+        ++i;
+        flag = true;
+        System.out.println(true);
+        System.out.println(i);
+        System.out.println("------");
+        User user = new User();
+        user.setName("123");
+        System.out.println("before covert name = " + user.getName());
+        covert(user);
+        System.out.println("after covert  name = " + user.getName());
+    }
+
+    void covert(User a) {
+        a.setName("tom");
+    }
+
+    @Test
+    public void test10() {
+        System.out.println("hello");
+        try {
+            int i = 1;
+            if (i > 0) {
+                return;
+            }
+        } finally {
+            System.out.println("fhn");
+        }
+        System.out.println("bye");
+    }
+
+    @Test
+    public void test11() {
+        Address a1 = new Address();
+        a1.setCity("庆阳");
+        String a2 = "加利福尼亚";
+        addressDao.findAddressByCity(a1).forEach(System.out::println);
+        System.out.println("-------");
+        addressDao.findAddressByCity(a2).forEach(System.out::println);
+    }
 }

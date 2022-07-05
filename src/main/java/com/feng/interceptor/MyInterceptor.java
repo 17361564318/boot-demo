@@ -13,14 +13,14 @@ public class MyInterceptor implements AsyncHandlerInterceptor {
     private static final Logger LOGGER = LoggerFactory.getLogger(MyInterceptor.class);
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         long requestStart = System.currentTimeMillis();
         request.setAttribute("startTime", requestStart);
         return true;
     }
 
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) {
         // 请求结束时间
         long requestEnd = System.currentTimeMillis();
         long startTime = (Long) request.getAttribute("startTime");

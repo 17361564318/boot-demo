@@ -18,7 +18,6 @@ public class User implements Serializable {
     private String gender;
     private List<Address> addressList;
 
-
     public Long getId() {
         return id;
     }
