@@ -121,7 +121,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @SystemLog(message = "查询用户以及地址")
+    @SystemLog("查询用户以及地址")
     public List<User> findUserAndAddress(User user) {
         return userDao.findUserAndAddress(user);
     }

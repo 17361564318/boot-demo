@@ -19,15 +19,15 @@ public class MyAspect {
     private static final Logger logger = LoggerFactory.getLogger(MyAspect.class);
 
     @Pointcut("@annotation(com.feng.annotation.SystemLog)")
-    public void LogPointCut() {
+    public void logPointcut() {
     }
 
-    @Before("LogPointCut()")
+    @Before("logPointcut()")
     public void beforeAdvice(JoinPoint point) {
         logger.info("前置通知,连接点{}", point);
     }
 
-    @AfterReturning("LogPointCut()")
+    @AfterReturning("logPointcut()")
     private void afterReturn(JoinPoint point) {
         logger.info("后置通知,连接点{}", point);
     }

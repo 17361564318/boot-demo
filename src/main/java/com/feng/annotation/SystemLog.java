@@ -9,5 +9,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SystemLog {
-    String message() default "";
+
+    String value() default "";
+
 }
