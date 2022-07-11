@@ -23,6 +23,6 @@ public class ScheduledTask {
 
     @Scheduled(fixedDelay = 60000)
     private void showTime () {
-        LOGGER.info("当前系统时间：{}, {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")), System.getProperty("os"));
+        LOGGER.info("当前系统时间：{}, {}", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")), System.getProperty("OS"));
     }
 }

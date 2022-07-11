@@ -1,6 +1,7 @@
 package com.feng.service.impl;
 
 import com.feng.Exception.BootDemoException;
+import com.feng.annotation.SystemLog;
 import com.feng.dao.AddressDao;
 import com.feng.dao.UserDao;
 import com.feng.entity.Address;
@@ -120,6 +121,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @SystemLog(message = "查询用户以及地址")
     public List<User> findUserAndAddress(User user) {
         return userDao.findUserAndAddress(user);
     }
