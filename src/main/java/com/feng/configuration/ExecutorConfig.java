@@ -42,7 +42,7 @@ public class ExecutorConfig {
         executor.setMaxPoolSize(maxPoolSize);
         executor.setQueueCapacity(queueCapacity);
         executor.setThreadNamePrefix(namePrefix);
-        // refection-policy 当pool已经达到max size的时候，如何处理新任务
+        // rejection-policy 当pool已经达到max size的时候，如何处理新任务
         // CALLER_RUNS: 不在新线程中执行任务，而是由调用者所在的线程来执行
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         // 执行初始化

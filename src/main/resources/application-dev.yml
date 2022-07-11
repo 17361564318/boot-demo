@@ -24,6 +24,10 @@ spring:
     url: jdbc:mysql://localhost:3306/boot-demo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: root
+  task:
+    scheduling:
+      pool:
+        size: 10
 mybatis:
   type-aliases-package: com.feng.entity
   mapper-locations: mapper/*Mapper.xml
