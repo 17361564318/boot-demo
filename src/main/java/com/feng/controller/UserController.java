@@ -37,7 +37,7 @@ public class UserController {
     }
 
     @GetMapping
-    public Result findUser(String name) {
+    public Result<?> findUser(String name) {
         if (StringUtil.isNullOrBlank(name)) {
             return Result.fail(StatusCode.PARAM_ERROR);
         }
