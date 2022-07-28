@@ -57,7 +57,7 @@ public class UserController {
     }
 
     @GetMapping("findUserAndAddress")
-    public Result findUserAndAddress(User user) {
+    public Result<List<User>> findUserAndAddress(User user) {
         if (!Objects.isNull(user)) {
             return Result.success(StatusCode.SUCCESS, userService.findUserAndAddress(user));
         } else {

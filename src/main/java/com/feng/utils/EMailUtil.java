@@ -48,7 +48,6 @@ public class EMailUtil {
                 } catch (Exception e) {
                     LOGGER.error("", e);
                 }
-                tempFiles[i] = tempFile;
             }
             Future<?> submit = ((ThreadPoolTaskExecutor) executor).submit(() -> setMailSender(to, dealCC(to, cc), subject, content, tempFiles));
             while (!submit.isDone()) {

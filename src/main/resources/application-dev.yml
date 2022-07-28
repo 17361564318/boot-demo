@@ -4,15 +4,29 @@ server:
     context-path: /boot
   tomcat:
     uri-encoding: UTF-8
+    threads:
+      max: 200
 async:
   executor:
     thread:
       core_pool_size: 5
-      max_pool_size: 5
-      queue_capacity: 5
+      max_pool_size: 10
+      queue_capacity: 10
       name:
-        prefix: myThread-service-
+        prefix: my-thread-
 spring:
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: 870137521@qq.com
+    password: tcegjmsgsymjbfae
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+        debug: false
+    from: 870137521@qq.com
   devtools:
     livereload:
       enabled: true
@@ -35,3 +49,8 @@ logging:
   level:
     com.feng: info
     com.feng.dao: debug
+  file:
+    path: D:\boot-demo-temp\logs\boot-demo.log
+temp:
+  file:
+    upload-path: D:\boot-demo-temp
