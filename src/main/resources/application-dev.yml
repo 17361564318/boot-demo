@@ -15,23 +15,25 @@ async:
       name:
         prefix: my-thread-
 spring:
+#  邮件相关
   mail:
     host: smtp.qq.com
     port: 587
     username: 870137521@qq.com
     password: tcegjmsgsymjbfae
     default-encoding: UTF-8
+    from: 870137521@qq.com
     properties:
       mail:
-        smtp:
-          socketFactoryClass: javax.net.ssl.SSLSocketFactory
-        debug: false
-    from: 870137521@qq.com
+      smtp:
+      socketFactoryClass: javax.net.ssl.SSLSocketFactory
+      debug: false
   devtools:
     livereload:
       enabled: true
     restart:
       enabled: true
+#      数据源相关
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -50,7 +52,7 @@ logging:
     com.feng: info
     com.feng.dao: debug
   file:
-    path: D:\boot-demo-temp\logs\boot-demo.log
+    name: D:\boot-demo-temp\logs\boot.log
 temp:
   file:
     upload-path: D:\boot-demo-temp

@@ -1,21 +1,14 @@
 package com.feng.service.impl;
 
-import com.feng.configuration.VisiableThreadPoolTaskExecutor;
 import com.feng.service.AsyncService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Future;
 
 
 /**
@@ -26,10 +19,6 @@ import java.util.concurrent.Future;
 @Service
 public class AsyncServiceImpl implements AsyncService {
     private static final Logger logger = LoggerFactory.getLogger(AsyncServiceImpl.class);
-
-    @Autowired
-    @Qualifier(value = "asyncServiceExecutor")
-    private Executor executor;
 
     @Override
     @Async("asyncServiceExecutor")
@@ -59,15 +48,6 @@ public class AsyncServiceImpl implements AsyncService {
         long end = System.currentTimeMillis();
         logger.info("线程{} ：{}存入数据消耗了{}毫秒", threadName, list.getClass().getSimpleName(), (end - start));
         logger.info("end executorAsyncTwo");
-        executorThree();
     }
 
-    public void executorThree() {
-        Future<?> future = ((ThreadPoolTaskExecutor) executor).submit(() -> System.out.println("class :"));
-        try {
-            Object o = future.get();
-        } catch (Exception e) {
-            logger.error("", e);
-        }
-    }
 }
